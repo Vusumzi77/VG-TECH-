@@ -1,0 +1,191 @@
+/* === SHOP PAGE STYLING === */
+
+.shop-page-wrapper {
+  padding: 0 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Product Grid */
+.shop-page-wrapper .product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+/* Product Card */
+.shop-page-wrapper .product-card {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.shop-page-wrapper .product-card:hover {
+  transform: translateY(-5px);
+}
+
+.shop-page-wrapper .product-image img {
+  width: 100%;
+  max-height: 150px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.shop-page-wrapper .product-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+.shop-page-wrapper .product-price {
+  font-size: 1.2rem;
+  color: #007BFF;
+  margin-top: 0.25rem;
+}
+
+.shop-page-wrapper .btn {
+  margin-top: auto;
+}
+
+.product-card .btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  margin-top: 0.5rem;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.product-card .btn:hover {
+  background-color: #0056b3;
+}
+
+/* === FILTER SECTION === */
+.filter-controls {
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #ddd;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.filter-controls h2 {
+  grid-column: 1 / -1;
+  margin-bottom: 0.5rem;
+}
+
+.filter-controls input[type="text"],
+.filter-controls select {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+
+/* === PRICE SLIDERS === */
+#minPrice,
+#maxPrice {
+  width: 100%;
+  height: 6px;
+  appearance: none;
+  background: #ccc;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+}
+
+#minPrice::-webkit-slider-thumb,
+#maxPrice::-webkit-slider-thumb {
+  appearance: none;
+  height: 16px;
+  width: 16px;
+  background: #007bff;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-top: -5px;
+}
+
+.price-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* === CURRENCY DROPDOWN === */
+.currency-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 10px 20px;
+  font-family: inherit;
+  background-color: #f8f8f8;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.currency-wrapper label {
+  font-weight: bold;
+}
+
+#currencyDropdown {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  background-color: white;
+  min-width: 160px;
+  cursor: pointer;
+}
+/* Wrap price sliders in a flex container */
+.price-range-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+  width: 100%;
+}
+
+/* Make sure sliders fit well in the layout */
+.price-range-wrapper label {
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.price-range-wrapper input[type="range"] {
+  flex: 1;
+  margin: 0 10px;
+  cursor: pointer;
+  height: 4px;
+  background: #ddd;
+  border-radius: 4px;
+  appearance: none;
+}
+
+.price-range-wrapper {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.price-range-wrapper input[type="range"] {
+  flex: 1;
+  cursor: pointer;
+  pointer-events: auto;
+}
+

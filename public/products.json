@@ -1,0 +1,78 @@
+[
+  {
+    "id": "ET101",
+    "name": "Proline Slim 128",
+    "price": "1900",
+    "description": "Stylish laptop with a portable design",
+    "benefits": "Here is something cool",
+    "specs": {
+      "storage": "128GB SSD Storage",
+      "ram": "4GB RAM",
+      "processor": "Intel Celeron Processor",
+      "display": "14 Inch HD Display",
+      "graphics": "Standard Dynamic Display on shared memory",
+      "other": ""
+    },
+    "images": [
+      "/uploads/images-1747167982154-567076659.jpg",
+      "/uploads/images-1747167982155-61657109.jpg"
+    ]
+  },
+  {
+    "id": "ET102",
+    "name": "Proline Slim 128",
+    "price": "1900",
+    "description": "Stylish laptop with a portable design",
+    "benefits": "cool",
+    "specs": {
+      "storage": "128GB SSD Storage",
+      "ram": "4GB RAM",
+      "processor": "Intel Celeron Processor",
+      "display": "14 Inch HD Display",
+      "graphics": "Standard Dynamic Display on shared memory",
+      "other": ""
+    },
+    "images": [
+      "/uploads/images-1747168092121-57737894.jpg",
+      "/uploads/images-1747168092121-141069549.jpg"
+    ]
+  },
+  {
+    "id": "ET103",
+    "name": "Proline Slim 128",
+    "price": "1900",
+    "description": "Stylish laptop with a portable design",
+    "benefits": "Something nice",
+    "specs": {
+      "storage": "128GB SSD Storage",
+      "ram": "4GB RAM",
+      "processor": "Intel Celeron Processor",
+      "display": "14 Inch HD Display",
+      "graphics": "Standard Dynamic Display on shared memory",
+      "other": ""
+    },
+    "images": [
+      "/uploads/images-1747168194194-854812376.jpg",
+      "/uploads/images-1747168194195-404696178.jpg"
+    ]
+  },
+  {
+    "id": "ET104",
+    "name": "Proline Slim",
+    "price": "2000",
+    "description": "Stylish laptop with a portable design",
+    "benefits": "",
+    "specs": {
+      "storage": "128GB SSD Storage",
+      "ram": "4GB RAM",
+      "processor": "Intel Celeron Processor",
+      "display": "14 Inch HD Display",
+      "graphics": "Standard Dynamic Display on shared memory",
+      "other": ""
+    },
+    "images": [
+      "/uploads/images-1747168293582-498358972.jpg",
+      "/uploads/images-1747168293583-155442232.jpg"
+    ]
+  }
+]

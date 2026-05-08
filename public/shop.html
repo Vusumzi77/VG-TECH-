@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shop - easytec</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/shop.css" />
+</head>
+<body>
+  <header>
+  <h1>easytec</h1>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="sell.html">Sell Your Laptop</a></li>
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="cart.html">🛒 Cart</a></li>
+    </ul>
+  </nav>
+
+  <!-- Currency dropdown goes here -->
+  <div class="currency-wrapper">
+    <label for="currencyDropdown">Currency:</label>
+    <select id="currencyDropdown"></select>
+  </div>
+</header>
+
+
+  <main class="shop-page-wrapper">
+    <section class="filter-controls">
+      <h2>Browse Products</h2>
+      <input type="text" id="searchBar" class="search-bar" placeholder="Search name or description..." />
+      
+      <select id="categoryFilter">
+        <option value="">All Categories</option>
+        <option value="Laptop">Laptops</option>
+        <option value="Cellphone">Cellphones</option>
+        <option value="Accessory">Accessories</option>
+        <option value="Laptop Part">Laptop Parts</option>
+      </select>
+
+      <div class="price-range-wrapper">
+        <label>Min Price: <span id="minPriceDisplay">R0</span></label>
+        <input type="range" id="minPrice" min="0" max="30000" step="100">
+        
+        <label>Max Price: <span id="maxPriceDisplay">R30000</span></label>
+        <input type="range" id="maxPrice" min="0" max="30000" step="100">
+      </div>
+
+
+
+      <input type="text" id="specSearch" class="search-bar" placeholder="Search by specs..." />
+    </section>
+
+    <section>
+      <div id="productGrid" class="product-grid">
+        <!-- Products will be loaded here -->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 easytec. All rights reserved.</p>
+  </footer>
+
+    <!-- Add this just before the closing </body> -->
+  <script src="js/currency.js"></script>  <!-- Load the shared currency utility -->
+  <script src="js/shop.js"></script>      <!-- Your page-specific script -->
+</body>
+</html>

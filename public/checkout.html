@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Checkout - VG TECH</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    header, footer {
+      background-color: #0047ab;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .checkout-container {
+      max-width: 700px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: bold;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .payment-methods {
+      margin-top: 25px;
+    }
+
+    .payment-btn {
+      width: 100%;
+      margin: 10px 0;
+      padding: 12px;
+      font-size: 16px;
+      background-color: #00a652;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .payment-btn:hover {
+      background-color: #008843;
+    }
+
+    .cod-option {
+      background-color: #444;
+    }
+
+    .cod-option:hover {
+      background-color: #222;
+    }
+
+    .total-section {
+      font-size: 18px;
+      font-weight: bold;
+      text-align: right;
+      margin-top: 20px;
+    }
+    #checkout-summary {
+      margin-top: 25px;
+      padding-top: 15px;
+      border-top: 1px solid #ccc;
+    }
+    
+    .checkout-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    
+    .checkout-total {
+      margin-top: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: right;}
+
+      .confirmation-message {
+  text-align: center;
+  padding: 40px;
+}
+
+.confirmation-message h2 {
+  color: #00a652;
+}
+
+.confirmation-message p {
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+.confirmation-message .cash-notice {
+  margin-top: 20px;
+  font-weight: bold;
+  color: #e60000;
+}
+
+
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Easytec Checkout</h1>
+</header>
+
+<main>
+  <div class="checkout-container">
+    <h2>Complete Your Order</h2>
+    <form id="checkout-form">
+      <label>Full Name</label>
+      <input type="text" name="name" required>
+
+      <label>Email Address</label>
+      <input type="email" name="email" required>
+
+      <label>Delivery Address</label>
+      <input type="text" name="address" required>
+
+      <label>Phone Number</label>
+      <input type="text" name="phone" required>
+
+      <div class="total-section">Total: R<span id="cart-total">0.00</span></div>
+
+      <div class="payment-methods">
+        <h3>Choose Payment Method</h3>
+        <button type="button" class="payment-btn" id="ozow-pay-btn">Pay with Ozow</button>
+        <button type="button" class="payment-btn" id="payfast-pay-btn">Pay with PayFast</button>
+        <button type="button" class="payment-btn" onclick="alert('Redirecting to Yoco...')">Pay with Yoco</button>
+        <button type="button" class="payment-btn" id="paypal-pay-btn">Pay with PayPal</button>
+        
+        <button type="button" class="payment-btn cod-option" id="confirm-checkout">Cash on Delivery</button>
+      </div>
+      <div id="checkout-summary"></div>
+
+
+<footer>
+  <p>© 2025 VG TECH. All rights reserved.</p>
+</footer>
+
+<!-- Total Calculation Script -->
+<script>
+  // Get cart items from localStorage
+  const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+  const totalSpan = document.getElementById('cart-total');
+  let total = 0;
+
+  if (cartItems.length > 0) {
+    cartItems.forEach(item => {
+      const price = parseFloat(item.price) || 0;
+      const quantity = item.quantity || 1;
+      total += price * quantity;
+    });
+  }
+
+  total = total.toFixed(2);
+  totalSpan.textContent = total;
+</script>
+
+<!-- Ozow Payment Integration -->
+<script>
+  document.getElementById('ozow-pay-btn').addEventListener('click', function (e) {
+    e.preventDefault();
+
+    const siteCode = "VGT-VGT-001";
+    const amount = total; // Use the dynamically calculated total
+    const currency = "ZAR";
+    const transactionReference = "EZT" + new Date().getTime();
+    const returnUrl = "https://yourdomain.com/thank-you.html";
+    const cancelUrl = "https://yourdomain.com/checkout.html";
+    const notifyUrl = "https://yourdomain.com/ozow-notify.php";
+
+    window.location.href = `https://pay.ozow.com/?SiteCode=${siteCode}&CountryCode=ZA&CurrencyCode=${currency}&Amount=${amount}&TransactionReference=${transactionReference}&BankReference=${transactionReference}&CancelUrl=${cancelUrl}&SuccessUrl=${returnUrl}&NotifyUrl=${notifyUrl}&isTest=true`;
+  });
+</script>
+
+<script>
+  document.getElementById('payfast-pay-btn').addEventListener('click', function (e) {
+    e.preventDefault();
+    const totalAmount = document.getElementById('cart-total').textContent;
+    const orderId = 'PF-' + Date.now();
+
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = 'https://sandbox.payfast.co.za/eng/process';
+    form.style.display = 'none';
+
+    const inputs = {
+      merchant_id: '10000100',
+      merchant_key: '46f0cd694581a',
+      return_url: 'https://yourdomain.com/success.html',
+      cancel_url: 'https://yourdomain.com/checkout.html',
+      notify_url: 'https://yourdomain.com/notify.php',
+      amount: totalAmount,
+      item_name: 'Easytec Order ' + orderId
+    };
+
+    for (let key in inputs) {
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = key;
+      input.value = inputs[key];
+      form.appendChild(input);
+    }
+
+    document.body.appendChild(form);
+    form.submit();
+  });
+</script>
+
+<script>
+  document.getElementById('paypal-pay-btn').addEventListener('click', function () {
+    const totalAmount = document.getElementById('cart-total').textContent;
+    const businessEmail = 'sb-merchant@business.example.com'; // Replace with your sandbox merchant email
+
+    const query = new URLSearchParams({
+      business: businessEmail,
+      amount: totalAmount,
+      item_name: 'Easytec Order',
+      currency_code: 'ZAR',
+      return: 'https://yourdomain.com/success.html',
+      cancel_return: 'https://yourdomain.com/checkout.html'
+    });
+
+    window.location.href = `https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_xclick&${query.toString()}`;
+  });
+</script>
+
+
+<script src="js/currency.js"></script>
+<script src="js/checkout.js"></script>
+
+</body>
+</html>

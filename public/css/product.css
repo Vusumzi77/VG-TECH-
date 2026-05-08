@@ -1,0 +1,140 @@
+.product-page-wrapper {
+  padding: 2rem;
+}
+
+.product-container {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.product-image {
+  flex: 1;
+  max-width: 400px;
+  margin-right: 2rem;
+}
+
+.product-image img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.product-details {
+  flex: 2;
+}
+
+.product-details h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.product-details p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.product-price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #0c4b8e;
+}
+
+.product-actions {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.btn {
+  padding: 0.7rem 1.2rem;
+  background-color: #0c4b8e;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn.buy {
+  background-color: #f96b0a;
+}
+
+/* Product specs styling */
+.product-specs-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.product-specs-list li {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+/* Collapsible WHY section */
+.collapsible-section {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  margin-top: 1rem;
+  border-radius: 5px;
+}
+
+.collapsible-btn {
+  background: none;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  color: #0c4b8e;
+  padding: 0;
+  margin-bottom: 0.5rem;
+}
+
+/* Fade effect for long text */
+.fade-text {
+  max-height: 3.6em; /* approx 2 lines */
+  overflow: hidden;
+  position: relative;
+  line-height: 1.2em;
+  background: linear-gradient(to bottom, transparent 60%, #f9f9f9 100%);
+  transition: max-height 0.4s ease;
+}
+
+.fade-text.expanded {
+  max-height: 1000px;
+  background: none;
+}
+
+#readMoreBtn {
+  margin-top: 10px;
+  background: none;
+  border: none;
+  color: #0c4b8e;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0;
+}
+
+#productLongDescription {
+  max-height: 4.5em; /* ~3 lines */
+  overflow: hidden;
+  position: relative;
+  transition: max-height 0.3s ease;
+  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+}
+
+#productLongDescription.expanded {
+  max-height: none;
+  mask-image: none;
+}
+
+#readMoreBtn {
+  background: none;
+  border: none;
+  color: #0c4b8e;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.5rem 0;
+}

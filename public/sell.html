@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sell Your Laptop - Easytec</title>
+  <link rel="stylesheet" href="css/sell.css" />
+
+</head>
+<body>
+  <header>
+    <h1 class="logo">easytec</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="sell.html" class="active">Sell Your Laptop</a></li>
+        <li><a href="how-it-works.html">How It Works</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="form-section">
+    <h2>Sell Your Laptop</h2>
+    <p>Fill in the details below and choose whether to sell directly or list for resale. We’ll arrange pickup and inspect your device before confirming the final offer.</p>
+
+    <form action="https://formspree.io/f/mpwdpzbw" method="POST" enctype="multipart/form-data">
+      <label>Full Name</label>
+      <input type="text" name="fullname" required />
+
+      <label>Email Address</label>
+      <input type="email" name="email" required />
+
+      <label>Phone Number</label>
+      <input type="tel" name="phone" required />
+
+      <label>Laptop Brand & Model</label>
+      <input type="text" name="model" required />
+
+      <label>Specifications (RAM, Storage, CPU, etc.)</label>
+      <input type="text" name="specs" required />
+
+      <label>Condition</label>
+      <select name="condition" required>
+        <option value="">Select...</option>
+        <option>Excellent</option>
+        <option>Good</option>
+        <option>Fair</option>
+        <option>Needs Repairs</option>
+      </select>
+
+      <label>Upload Photos (optional)</label>
+      <input type="file" name="photos" multiple />
+
+      <label>Pickup Address</label>
+      <textarea name="pickup-address" required></textarea>
+
+      <label>Choose Selling Option:</label>
+      <div class="radio-group">
+        <label><input type="radio" name="sell-option" value="direct" required /> Sell to Easytec (valuation required)</label>
+        <label><input type="radio" name="sell-option" value="resale" required /> List for resale (we’ll refurbish it)</label>
+      </div>
+
+      <label class="checkbox-label">
+        <input type="checkbox" name="agreement" value="yes" required />
+        I understand the valuation is not final and will only be confirmed after inspection.
+      </label>
+
+      <p class="disclaimer">
+        ⚠️ Note: We will arrange a courier pickup once your form is submitted. Please keep your device ready for collection.
+      </p>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </main>
+
+  <footer>
+    <p>© 2025 Easytec. All rights reserved.</p>
+  </footer>
+</body>
+</html>

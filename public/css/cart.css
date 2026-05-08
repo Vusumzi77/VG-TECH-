@@ -1,0 +1,115 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #0047ab;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+header h1.logo {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #ffffff;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  background-color: #003a96;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 1rem;
+  display: inline-block;
+}
+
+nav ul li a.active,
+nav ul li a:hover {
+  background-color: #002f75;
+  border-radius: 5px;
+}
+
+main.form-section {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+main.form-section h2 {
+  font-size: 1.6rem;
+  margin-bottom: 25px;
+  color: #0c4b8e;
+  text-align: center;
+}
+
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.cart-table th,
+.cart-table td {
+  border: 1px solid #ddd;
+  padding: 14px;
+  text-align: center;
+  font-size: 15px;
+}
+
+.cart-table th {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.cart-table td button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cart-table td button:hover {
+  background-color: #d32f2f;
+}
+
+#cart-total {
+  text-align: right;
+  font-size: 1.2rem;
+  color: #222;
+}
+
+.btn.btn-primary {
+  display: inline-block;
+  padding: 12px 20px;
+  background-color: #0c4b8e;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  float: right;
+  transition: background-color 0.3s ease;
+}
+
+.btn.btn-primary:hover {
+  background-color: #093e78;
+}

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Easytec Product Uploader</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background-color: #f4f4f4;
+    }
+
+    h1 {
+      text-align: center;
+      color: #0047ab;
+    }
+
+    .form-container {
+      background: #fff;
+      padding: 25px;
+      max-width: 600px;
+      margin: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px;
+      background-color: #0047ab;
+      color: white;
+      border: none;
+      width: 100%;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+
+    button:hover {
+      background-color: #003080;
+    }
+
+    #preview-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .preview-img {
+      max-width: 100px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Easytec Product Uploader</h1>
+<div class="form-container">
+  <form id="productForm">
+    <label>Product Name</label>
+    <input type="text" id="name" name="name" placeholder="e.g. Lenovo ThinkPad T480" required />
+
+    <label>Price</label>
+    <input type="text" id="price" name="price" placeholder="e.g. R6,999" required />
+
+    <label>Storage Size and Type</label>
+    <input type="text" name="storage" placeholder="e.g. 256GB SSD Storage" />
+    <label>RAM</label>
+    <input type="text" name="ram" placeholder="e.g. 8GB RAM" />
+    <label>Processor</label>
+    <input type="text" name="processor" placeholder="e.g. Core i5 8th Gen" />
+    <label>Display</label>
+    <input type="text" name="display" placeholder="e.g. 15.6 inch HD" />
+    <label>Graphics</label>
+    <input type="text" name="graphics" placeholder="e.g. Intel HD or NVIDIA" />
+    <label>Other Specs</label>
+    <input type="text" name="other" placeholder="Any other specs" />
+
+    <label>Description</label>
+    <input type="text" id="description" name="description" placeholder="e.g. Solid business laptop" required />
+
+    <label>Select Product Images</label>
+    <input type="file" id="images" name="images" accept="image/*" multiple required />
+
+    <div id="preview-container"></div>
+
+    <label>Benefits / Long Description</label>
+    <textarea id="benefits" name="benefits" rows="5"></textarea>
+
+    <button type="submit">Upload Product</button>
+  </form>
+  <div id="output"></div>
+</div>
+
+<script>
+  const form = document.getElementById("productForm");
+  const imageInput = document.getElementById("images");
+  const previewContainer = document.getElementById("preview-container");
+  const output = document.getElementById("output");
+
+  imageInput.addEventListener("change", function () {
+    previewContainer.innerHTML = "";
+    Array.from(this.files).forEach(file => {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const img = document.createElement("img");
+        img.src = e.target.result;
+        img.classList.add("preview-img");
+        previewContainer.appendChild(img);
+      };
+      reader.readAsDataURL(file);
+    });
+  });
+
+ form.addEventListener("submit", async function (e) {
+  e.preventDefault();
+  const formData = new FormData(form);
+
+  const specs = {
+    storage: formData.get("storage"),
+    ram: formData.get("ram"),
+    processor: formData.get("processor"),
+    display: formData.get("display"),
+    graphics: formData.get("graphics"),
+    other: formData.get("other")
+  };
+
+  formData.append("specs", JSON.stringify(specs));
+
+  // Remove old individual spec fields
+  ["storage", "ram", "processor", "display", "graphics", "other"].forEach(key => formData.delete(key));
+
+  // ✅ Append image files properly
+  const imageFiles = document.querySelector('input[name="images"]').files;
+  for (let i = 0; i < imageFiles.length; i++) {
+    formData.append("images", imageFiles[i]);
+  }
+
+  try {
+    const res = await fetch("http://localhost:3000/upload", {
+      method: "POST",
+      body: formData
+    });
+
+    const data = await res.json();
+    output.textContent = JSON.stringify(data, null, 2);
+    alert("Product uploaded successfully!");
+    form.reset();
+    previewContainer.innerHTML = "";
+  } catch (err) {
+    console.error(err);
+    alert("Failed to upload product.");
+  }
+});
+
+</script>
+<script>
+  function getCurrencyFromLocale(locale) {
+    const localeToCurrency = {
+      'en-ZA': 'ZAR', 'af-ZA': 'ZAR',
+      'en-US': 'USD',
+      'en-GB': 'GBP',
+      'en-CA': 'CAD', 'fr-CA': 'CAD',
+      'en-AU': 'AUD',
+      'fr-FR': 'EUR', 'de-DE': 'EUR', 'es-ES': 'EUR', 'it-IT': 'EUR',
+      'ja-JP': 'JPY',
+      'zh-CN': 'CNY',
+      'hi-IN': 'INR',
+      'pt-BR': 'BRL',
+      'ru-RU': 'RUB',
+      'ko-KR': 'KRW',
+      'ar-SA': 'SAR',
+      // Add more as needed...
+    };
+
+    // Fallback to ZAR if unknown
+    return localeToCurrency[locale] || 'ZAR';
+  }
+
+  function formatCurrency(value, currency, locale) {
+    return new Intl.NumberFormat(locale, {
+      style: 'currency',
+      currency: currency,
+      minimumFractionDigits: 2,
+    }).format(value);
+  }
+
+  // Detect user locale and determine currency
+  let userLocale = Intl.NumberFormat().resolvedOptions().locale || 'en-ZA';
+  let userCurrency = getCurrencyFromLocale(userLocale);
+
+  // Format input on blur
+  const priceInput = document.getElementById('price');
+
+  priceInput.addEventListener('blur', () => {
+    const rawValue = parseFloat(priceInput.value.replace(/[^\d.]/g, ''));
+    if (!isNaN(rawValue)) {
+      priceInput.value = formatCurrency(rawValue, userCurrency, userLocale);
+    }
+  });
+</script>
+
+</body>
+</html>

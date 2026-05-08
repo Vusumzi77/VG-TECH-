@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Cart - VG TECH</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/cart.css" />
+</head>
+<body>
+  <header>
+    <h1 class="logo">VG TECH</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="cart.html" class="active">Cart</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="form-section">
+    <h2>Your Cart</h2>
+    <table class="cart-table">
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Total</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody id="cart-items"></tbody>
+</table>
+    <p id="cart-total" style="margin-top: 20px; font-weight: bold;"></p>
+    <a href="checkout.html" class="btn btn-primary">Proceed to Checkout</a>
+  </main>
+
+  <script src="js/currency.js"></script>
+  <script src="js/cart.js"></script>
+
+</body>
+</html>

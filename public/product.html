@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Product - VG TECH</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/product.css" />
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <h1>VG TECH</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="sell.html">Sell Your Laptop</a></li>
+        <li><a href="how-it-works.html">How It Works</a></li>
+        <li><a href="cart.html">🛒 Cart</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="product-page-wrapper">
+    <div class="product-container">
+      <div class="product-image" id="productImage"></div>
+
+      <div class="product-details">
+        <h1 id="productName"></h1>
+        <p id="productPrice" class="product-price"></p>
+        <p id="productDescription"></p>
+
+        <div class="product-actions">
+          <button onclick="addToCart()" class="btn">Add to Cart</button>
+          <button onclick="buyNow()" class="btn buy">Buy Now</button>
+        </div>
+
+        <ul id="productSpecs" class="product-specs-list"></ul>
+
+        <div class="collapsible-section">
+          <button class="collapsible-btn" onclick="toggleWhy()">Why this Laptop?</button>
+          <div id="detailsContent" class="collapsible-content">
+            <p id="productLongDescription" class="fade-text"></p>
+            <button id="readMoreBtn" onclick="expandWhy()">READ MORE</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 VG TECH. All rights reserved.</p>
+  </footer>
+
+  <script src="js/currency.js"></script>
+  <script src="js/product.js"></script>
+
+</body>
+</html>
