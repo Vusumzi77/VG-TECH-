@@ -1,5 +1,5 @@
 // Fetch products and display them
-fetch('products.json')
+fetch('/api/products')
   .then(res => res.json())
   .then(products => {
     const productGrid = document.getElementById('productGrid');

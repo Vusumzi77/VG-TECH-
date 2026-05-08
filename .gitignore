@@ -1,0 +1,6 @@
+node_modules/
+.env
+data/orders.json
+data/receipts/
+public/uploads/
+*.log

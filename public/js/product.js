@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const productId = params.get('id');
   console.log('Product ID from URL:', productId);
 
-  fetch('products.json')
+  fetch('/api/products')
     .then(response => response.json())
     .then(products => {
       console.log('Loaded products:', products);
@@ -65,7 +65,7 @@ function addToCart() {
   const params = new URLSearchParams(window.location.search);
   const productId = params.get('id');
 
-  fetch('products.json')
+  fetch('/api/products')
     .then(response => response.json())
     .then(products => {
       const product = products.find(p => p.id === productId);

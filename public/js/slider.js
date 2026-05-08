@@ -1,6 +1,6 @@
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    fetch('products.json')
+    fetch('/api/products')
       .then(res => {
         if (!res.ok) {
           throw new Error('Failed to load products.json');
